@@ -14,10 +14,11 @@ WITH hybrid_cars AS (
        AND power_fuel > 0
 )
 
+-- Final set: Join the country table and aggregate on the 'country' column
 SELECT brands.country,
        COUNT(brands.country) AS amount
 FROM hybrid_cars 
 JOIN car_brands AS brands
   ON hybrid_cars.brand = brands.brand
 GROUP BY 1
-ORDER BY amount DESC
+ORDER BY 2 DESC

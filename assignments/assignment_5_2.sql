@@ -17,7 +17,11 @@ WITH cars_hybrid AS (
 
 
 SELECT cars_hybrid.brand,
-       ROUND(AVG(cars_hybrid.price), 2) AS avg_price
+       ROUND( 
+            AVG(cars_hybrid.price) -- param 1: column
+                              , 2  -- param 2: decimals
+            ) 
+             AS avg_price
 FROM cars_hybrid
 GROUP BY 1
 ORDER BY avg_price DESC

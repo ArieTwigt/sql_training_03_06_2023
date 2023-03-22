@@ -20,13 +20,14 @@ WITH brands_motor AS (
     -- Subset 2: - Create the relative/pct columns for power_fuel and power_electric to get the relative powers
     SELECT brands_motor.brand,
        brands_motor.model,
-       brands_motor.power_fuel / 
+       ROUND(brands_motor.power_fuel / 
                 (brands_motor.power_fuel + 
-                 brands_motor.power_electric ) * 100
+                 brands_motor.power_electric ) * 100, 1)
             AS pct_power_fuel,
+        ROUND(
         brands_motor.power_electric / 
                 (brands_motor.power_fuel + 
-                 brands_motor.power_electric ) * 100
+                 brands_motor.power_electric ) * 100, 1)
             AS pct_power_electric
 FROM brands_motor
 )
